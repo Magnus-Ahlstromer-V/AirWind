@@ -1,12 +1,13 @@
 #include "Animation.h"
 #include "RenderWindow.h"
 
-void SetAnimationProperties(Animation* animation, const std::string& id, int row, int frameCount, int animSpeed)
+void SetAnimation(Animation* animation, const std::string& id, int row, int frameCount, int animSpeed, SDL_RendererFlip flip)
 {
     animation->textureId = id;
     animation->spriteRow = row;
     animation->frameCouunt = frameCount;
     animation->animSpeed = animSpeed;
+    animation->flip = flip;
 }
 
 void UpdateAnimation(Animation* animation)
@@ -16,5 +17,5 @@ void UpdateAnimation(Animation* animation)
 
 void DrawAnimation(Animation* animation, float x, float y, int spriteWidth, int spriteHeight, uint8_t scale)
 {
-    RenderWindow::Get().DrawFrame(animation->textureId, x, y, spriteWidth, spriteHeight, animation->spriteRow, animation->spriteFrame, scale);
+    RenderWindow::Get().DrawFrame(animation->textureId, x, y, spriteWidth, spriteHeight, animation->spriteRow, animation->spriteFrame, scale, animation->flip);
 }

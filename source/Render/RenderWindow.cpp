@@ -82,7 +82,23 @@ void RenderWindow::Draw(const std::string& id, int x, int y, uint8_t scale)
 	SDL_RenderCopy(m_renderer, m_textureMap[id], &source, &dest);
 }
 
-void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, int row, int frame, uint8_t scale)
+void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, int frame, uint8_t scale, SDL_RendererFlip flip)
+{
+	SDL_Rect source, dest;
+	source.x = w * frame;
+	source.y = h;
+	source.w = w;
+	source.h = h;
+
+	dest.x = x;
+	dest.y = y;
+	dest.w = source.w * scale;
+	dest.h = source.h * scale;
+
+	SDL_RenderCopyEx(m_renderer, m_textureMap[id], &source, &dest, 0, NULL, flip);
+}
+
+void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, int row, int frame, uint8_t scale, SDL_RendererFlip flip)
 {
 	SDL_Rect source, dest;
 	source.x = w * frame;
@@ -95,7 +111,7 @@ void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, 
 	dest.w = source.w * scale;
 	dest.h = source.h * scale;
 
-	SDL_RenderCopy(m_renderer, m_textureMap[id], &source, &dest);
+	SDL_RenderCopyEx(m_renderer, m_textureMap[id], &source, &dest, 0, NULL, flip);
 }
 
 

@@ -5,6 +5,9 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+#define LEFT -1
+#define RIGHT 1
+
 class Entity
 {
 public:
@@ -21,8 +24,10 @@ public:
 	inline uint8_t GetScale() const { return m_scale; }
 
 	inline void SetScale(uint8_t scale) { m_scale = scale; }
+	inline void SetDirection(uint8_t direction) { m_direction = direction; }
 
 protected:
+	uint8_t m_direction;
 	uint8_t m_scale;
 	Vector2f m_position;
 	Vector2i m_size;

@@ -11,6 +11,6 @@ public:
     void Render();    
 
 private:
-    Animation m_animation;
 
+    Animation m_animation;
 };

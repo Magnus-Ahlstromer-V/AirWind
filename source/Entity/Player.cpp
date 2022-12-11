@@ -4,18 +4,34 @@
 Player::Player(const std::string& id, int x, int y, int w, int h) : Entity(id, x, y, w, h)
 {
     SetScale(2);
-    RenderWindow::Get().LoadTexture(m_textureId, "assets/Player/player_idle.png");
-    SetAnimationProperties(&m_animation, m_textureId, 0, 11, 60);
+
+    RenderWindow::Get().LoadTexture("player_idle", "assets/player/idle.png");
+    RenderWindow::Get().LoadTexture("player_run", "assets/player/run.png");
+    
+    SetAnimation(&m_animation, m_textureId, 0, 11, 60);
 }
 
 void Player::Update()
 {
     UpdateAnimation(&m_animation);
 
-    if (IsKeyPressed(SDL_SCANCODE_LEFT)) m_position.x -= 5;
-    if (IsKeyPressed(SDL_SCANCODE_RIGHT)) m_position.x += 5;
-    if (IsKeyPressed(SDL_SCANCODE_UP)) m_position.y -= 5;
-    if (IsKeyPressed(SDL_SCANCODE_DOWN)) m_position.y += 5;
+    if (m_direction == RIGHT)
+        SetAnimation(&m_animation, "player_idle", 0, 11, 60);
+    else
+        SetAnimation(&m_animation, "player_idle", 0, 11, 60, SDL_FLIP_HORIZONTAL);
+
+    if (IsKeyPressed(SDL_SCANCODE_LEFT))
+    {
+        m_position.x -= 7;
+        SetAnimation(&m_animation, "player_run", 0, 11, 50, SDL_FLIP_HORIZONTAL);
+        SetDirection(LEFT);
+    }
+    if (IsKeyPressed(SDL_SCANCODE_RIGHT))
+    {
+        m_position.x += 7;
+        SetAnimation(&m_animation, "player_run", 0, 11, 50);
+        SetDirection(RIGHT);
+    }
 
 }
 
