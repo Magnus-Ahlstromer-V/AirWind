@@ -5,8 +5,12 @@
 #include <SDL2/SDL.h>
 #include <string>
 
-#define LEFT -1
-#define RIGHT 1
+
+enum Direction
+{
+	LEFT = -1,
+	RIGHT = 1
+};
 
 class Entity
 {
