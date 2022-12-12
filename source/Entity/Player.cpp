@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "Util/Input.h"
 
+#include <stdio.h>
+
 Player::Player(const std::string& id, int x, int y, int w, int h) : Entity(id, x, y, w, h)
 {
     SetScale(2);
@@ -9,6 +11,12 @@ Player::Player(const std::string& id, int x, int y, int w, int h) : Entity(id, x
     RenderWindow::Get().LoadTexture("player_run", "assets/player/run.png");
     
     SetAnimation(&m_animation, m_textureId, 0, 11, 60);
+}
+
+Player::~Player()
+{
+    RenderWindow::Get().DropTexture("player_idle");
+    RenderWindow::Get().DropTexture("player_run");
 }
 
 void Player::Update()

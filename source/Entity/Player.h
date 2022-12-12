@@ -6,9 +6,10 @@ class Player : public Entity
 {
 public:
     Player(const std::string& id, int x, int y, int w, int h);
+    ~Player();
 
     void Update();
-    void Render();    
+    void Render();
 
 private:
 
