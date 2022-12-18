@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <string>
 
 struct Input
 {
@@ -10,5 +11,6 @@ struct Input
 
 bool IsKeyPressed(int key);
 bool IsKeyReleased(int key);
+int8_t GetInputAxis(const std::string& axis);
 
 extern Input input;
