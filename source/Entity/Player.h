@@ -12,6 +12,9 @@ public:
     void Render();
 
 private:
+    void CycleAnimations(int8_t direction);
 
+private:
+    bool m_jumping;
     Animation m_animation;
 };

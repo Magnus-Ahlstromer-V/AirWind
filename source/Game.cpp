@@ -6,7 +6,7 @@ Game::Game()
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 
-	m_player = new Player("player_idle", 200, 512 - 64, 32, 32);
+	m_player = new Player("player_idle", 200, 200, 32, 32);
 }
 
 Game::~Game()
