@@ -103,7 +103,7 @@ void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, 
 {
 	SDL_Rect source, dest;
 	source.x = w * frame;
-	source.y = h;
+	source.y = 0;
 	source.w = w;
 	source.h = h;
 
@@ -115,7 +115,7 @@ void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, 
 	SDL_RenderCopyEx(m_renderer, m_textureMap[id], &source, &dest, 0, NULL, flip);
 }
 
-void RenderWindow::DrawFrame(const std::string& id, int x, int y, int w, int h, int row, int frame, uint8_t scale, SDL_RendererFlip flip)
+void RenderWindow::DrawFrameEx(const std::string& id, int x, int y, int w, int h, int row, int frame, uint8_t scale, SDL_RendererFlip flip)
 {
 	SDL_Rect source, dest;
 	source.x = w * frame;
