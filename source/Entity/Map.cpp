@@ -19,15 +19,15 @@ Map::Map() :
     "#..............................#"
     "#..............................#"
     "#..............................#"
-    "#.......................g......#"
+    "#..............................#"
     "################################";
 
-    RenderWindow::Get().LoadTexture("gem", "assets/gem32.png");
+    RenderWindow::Get().LoadTexture("atlas", "assets/reactor.png");
 }
 
 Map::~Map()
 {
-    RenderWindow::Get().DropTexture("gem");
+    RenderWindow::Get().DropTexture("atlas");
 }
 
 char Map::GetTile(int x, int y)
@@ -55,14 +55,11 @@ void Map::DrawMap()
             switch (tileId)
             {
                 case '.':
+                    RenderWindow::Get().DrawRect(j * 32, i * 32, 32, 32, 0x242A3BFF);
                     break;
 
                 case '#':
-                    RenderWindow::Get().DrawRect(j * 32, i * 32, 32, 32, 0x00FF00FF);
-                    break;
-
-                case 'g':
-                    RenderWindow::Get().DrawFrame("gem", j * 32, i * 32, 32, 32, 0);
+                    RenderWindow::Get().DrawFrame("atlas", j * 32, i * 32, 16, 16, 14, 2);
                     break;                 
             }
         }
