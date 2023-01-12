@@ -7,11 +7,13 @@ Game::Game()
 	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 
 	m_player = new Player("player_idle", 200, 200, 32, 32);
+	m_map = new Map();
 }
 
 Game::~Game()
 {
 	delete m_player;
+	delete m_map;
 
 	RenderWindow::Get().Clean();
 
@@ -30,7 +32,8 @@ void Game::Render()
 {
 	RenderWindow::Get().SetDrawColor(0x21, 0x13, 0x4D, 0xFF);
 	RenderWindow::Get().Clear();
-	
+
+	m_map->DrawMap();	
 	m_player->Render();
 
 	RenderWindow::Get().Display();

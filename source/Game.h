@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity/Player.h"
+#include "Entity/Map.h"
 
 class Game
 {
@@ -15,4 +16,5 @@ private:
 
 private:
 	Player* m_player;
+	Map* m_map;
 };

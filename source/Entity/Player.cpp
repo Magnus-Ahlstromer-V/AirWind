@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "Util/Input.h"
+#include "../Util/Input.h"
 
 #include <stdio.h>
 

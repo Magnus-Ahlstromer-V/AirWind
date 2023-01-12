@@ -1,6 +1,6 @@
 #pragma once
-#include "Render/RenderWindow.h"
-#include "Util/Types.h"
+#include "../Render/RenderWindow.h"
+#include "../Util/Types.h"
 
 #include <SDL2/SDL.h>
 #include <string>
