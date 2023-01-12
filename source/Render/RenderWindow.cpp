@@ -44,23 +44,6 @@ void RenderWindow::LoadTexture(const std::string &id, const char* path)
 
 }
 
-void RenderWindow::DrawRect(int x, int y, int w, int h, uint32_t color, bool filled)
-{
-	int red = (color >> (8*3)) & 0xFF;
-	int green = (color >> (8*2)) & 0xFF;
-	int blue = (color >> (8*1)) & 0xFF;
-	int alpha = (color >> (8*0)) & 0xFF;
-	SDL_SetRenderDrawColor(m_renderer, red, green, blue, alpha);
-
-	SDL_Rect rect { x, y, w, h };
-	
-	if (filled)
-		SDL_RenderFillRect(m_renderer, &rect);
-	else
-		SDL_RenderDrawRect(m_renderer, &rect);
-
-}
-
 void RenderWindow::DropTexture(const std::string& id)
 {
 	if (m_textureMap[id])
@@ -82,6 +65,23 @@ void RenderWindow::Clear()
 void RenderWindow::Display()
 {
 	SDL_RenderPresent(m_renderer);
+}
+
+void RenderWindow::DrawRect(int x, int y, int w, int h, uint32_t color, bool filled)
+{
+	int red = (color >> (8*3)) & 0xFF;
+	int green = (color >> (8*2)) & 0xFF;
+	int blue = (color >> (8*1)) & 0xFF;
+	int alpha = (color >> (8*0)) & 0xFF;
+	SDL_SetRenderDrawColor(m_renderer, red, green, blue, alpha);
+
+	SDL_Rect rect { x, y, w, h };
+	
+	if (filled)
+		SDL_RenderFillRect(m_renderer, &rect);
+	else
+		SDL_RenderDrawRect(m_renderer, &rect);
+
 }
 
 void RenderWindow::Draw(const std::string& id, int x, int y, uint8_t scale)
