@@ -18,6 +18,7 @@ public:
 	// Main render methods
 	void LoadTexture(const std::string& id, const char* path);
 	void DropTexture(const std::string& id);
+	void DrawRect(int x, int y, int w, int h, uint32_t color, bool filled = true);
 	void Draw(const std::string& id, int x, int y, uint8_t scale = 1);
 	void DrawFrame(const std::string& id, int x, int y, int w, int h, int frame, uint8_t scale = 1, SDL_RendererFlip flip = SDL_FLIP_NONE); 
 	void DrawFrame(const std::string& id, int x, int y, int w, int h, int row, int frame, uint8_t scale = 1, SDL_RendererFlip flip = SDL_FLIP_NONE); 

@@ -1,5 +1,5 @@
 #include "RenderWindow.h"
-#include "Util/Input.h"
+#include "../Util/Input.h"
 
 #include <assert.h>
 
@@ -10,7 +10,7 @@ RenderWindow::RenderWindow()
 	m_closed = false;
 	m_width = 1024;
 	m_height = 512;
-	m_title = "Air Wind";
+	m_title = "Neuclear Reactor";
 	
 	m_window = SDL_CreateWindow(m_title, CENTER, CENTER, m_width, m_height, 0);	
 	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -41,6 +41,23 @@ void RenderWindow::LoadTexture(const std::string &id, const char* path)
 	assert(texture);
 
 	m_textureMap[id] = texture;
+
+}
+
+void RenderWindow::DrawRect(int x, int y, int w, int h, uint32_t color, bool filled)
+{
+	int red = (color >> (8*3)) & 0xFF;
+	int green = (color >> (8*2)) & 0xFF;
+	int blue = (color >> (8*1)) & 0xFF;
+	int alpha = (color >> (8*0)) & 0xFF;
+	SDL_SetRenderDrawColor(m_renderer, red, green, blue, alpha);
+
+	SDL_Rect rect { x, y, w, h };
+	
+	if (filled)
+		SDL_RenderFillRect(m_renderer, &rect);
+	else
+		SDL_RenderDrawRect(m_renderer, &rect);
 
 }
 
