@@ -66,6 +66,7 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/Entity.o \
+	$(OBJDIR)/Map.o \
 	$(OBJDIR)/Player.o \
 	$(OBJDIR)/Game.o \
 	$(OBJDIR)/Main.o \
@@ -131,6 +132,9 @@ $(OBJECTS): | $(OBJDIR)
 endif
 
 $(OBJDIR)/Entity.o: source/Entity/Entity.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/Map.o: source/Entity/Map.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/Player.o: source/Entity/Player.cpp
