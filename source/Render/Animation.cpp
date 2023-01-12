@@ -17,5 +17,5 @@ void UpdateAnimation(Animation* animation)
 
 void DrawAnimation(Animation* animation, float x, float y, int spriteWidth, int spriteHeight, uint8_t scale)
 {
-    RenderWindow::Get().DrawFrame(animation->textureId, x, y, spriteWidth, spriteHeight, animation->spriteRow, animation->spriteFrame, scale, animation->flip);
+    RenderWindow::Get().DrawFrameEx(animation->textureId, x, y, spriteWidth, spriteHeight, animation->spriteRow, animation->spriteFrame, scale, animation->flip);
 }
